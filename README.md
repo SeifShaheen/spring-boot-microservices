@@ -1,13 +1,13 @@
 # spring-boot-microservices
 In this project, multiple microservices communicate with each other to provide the backend services of a minimalistic/sample movie rating application similar to IMDB.
 
-## Technologies
+## Technologies:
 
 - Spring Boot
 - Spring Cloud Eureka (Service Discovery)
 - Spring Cloud Hystrix (Dashboard, Circuit Breaker pattern, Bulkhead pattern)
 
-## Summary
+## Summary:
 
 *  __MovieInfoService__ provides the movie info by sending requests to __TheMovieDB API__. 
 * __RatingsDataService__ provides the user's ratings for movies.
@@ -16,7 +16,7 @@ In this project, multiple microservices communicate with each other to provide t
 
 ![Screen Shot 2021-09-23 at 16 48 57](https://user-images.githubusercontent.com/22833948/134519062-0013cbf9-8a5f-4a43-ba14-635ccdbab04b.png)
 
-## Running
+## Running:
 
 You can run each project either using your IDE or *mvn spring-boot:run* starting from __DiscoveryServer__. Projects will run on the following endpoints:
 
