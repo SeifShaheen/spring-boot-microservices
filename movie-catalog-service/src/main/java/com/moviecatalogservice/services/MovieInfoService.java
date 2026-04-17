@@ -34,12 +34,20 @@ public class MovieInfoService {
                     @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000")
     })
     public CatalogItem getCatalogItem(Rating rating) {
-        String movieDetailsUrl = "http://movie-info-service/movies/" + rating.getMovieId();
-        Movie movie = this.restTemplate.getForObject(movieDetailsUrl, Movie.class);
-        return new CatalogItem(movie.getName(), movie.getDescription(), rating.getRating());
+        try {
+            String movieDetailsUrl = "http://movie-info-service/movies/" + rating.getMovieId();
+            Movie movie = this.restTemplate.getForObject(movieDetailsUrl, Movie.class);
+
+            System.out.println("Movie response: " + movie);
+
+            return new CatalogItem(rating.getMovieId(), movie.getName(), movie.getDescription(), rating.getRating());
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     public CatalogItem getFallbackCatalogItem(Rating rating) {
-        return new CatalogItem("Movie name not found", "", rating.getRating());
+        return new CatalogItem(rating.getMovieId(), "Movie name not found", "", rating.getRating());
     }
 }

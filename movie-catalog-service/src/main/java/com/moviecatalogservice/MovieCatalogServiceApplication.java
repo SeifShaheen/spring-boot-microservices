@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootApplication
 @EnableEurekaClient
 @EnableCircuitBreaker
 @EnableHystrixDashboard
+@SpringBootApplication(scanBasePackages = {"com.moviecatalogservice", "com.example.trendingmovieservice"})
 public class MovieCatalogServiceApplication {
 
     private final int TIMEOUT = 3000;   // 3 seconds

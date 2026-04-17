@@ -2,6 +2,7 @@ package com.moviecatalogservice.models;
 
 public class CatalogItem {
 
+    private String movieId;
     private String name;
     private String description;
     private int rating;
@@ -10,10 +11,19 @@ public class CatalogItem {
 
     }
 
-    public CatalogItem(String name, String description, int rating) {
+    public CatalogItem(String movieId, String name, String description, int rating) {
+        this.movieId = movieId;
         this.name = name;
         this.description = description;
         this.rating = rating;
+    }
+
+    public String getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(String movieId) {
+        this.movieId = movieId;
     }
 
     public String getName() {
